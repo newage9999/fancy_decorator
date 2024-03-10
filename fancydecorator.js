@@ -1,8 +1,8 @@
-http = require('http')
+const http = require('http')
 
 // TODO: implement function debugDecorator here
 
-var debugDecorator = function (f) {
+const debugDecorator = function (f) {
 	
 
 
@@ -11,7 +11,7 @@ var debugDecorator = function (f) {
 
 // TODO: implement class RandomDelayDecorator here
 
-var RandomDelayDecorator = function() {
+const RandomDelayDecorator = function() {
 
 	// m = (0.5 + 0.5 * Math.random()) * milliseconds
 	// setTimeout(f, m, p)
@@ -63,13 +63,13 @@ console.log("--------------------------------------------------")
 console.log("Tests for debugDecorator")
 console.log("--------------------------------------------------")
 
-var test1 = debugDecorator(function f1(x) { console.log("  f1 function called with x = " + x); return -2 * x })
+const test1 = debugDecorator(function f1(x) { console.log("  f1 function called with x = " + x); return -2 * x })
 
 console.log("  Is return value -6? " + (test1(3) === -6) + "\n")
 console.log("  Is return value -8? " + (test1(4) === -8) + "\n")
 console.log("  Is return value NaN? " + (isNaN(test1())) + "\n")
 
-var test2 = debugDecorator(function f2(x) { console.log("  f2 function called with x = " + x); })
+const test2 = debugDecorator(function f2(x) { console.log("  f2 function called with x = " + x); })
 
 console.log("  Is return value undefined? " + (test2(1) === undefined) + "\n")
 console.log("  Is return value undefined? " + (test2() === undefined) + "\n")
@@ -78,17 +78,17 @@ console.log("--------------------------------------------------")
 console.log("Tests for RandomDelayDecorator")
 console.log("--------------------------------------------------")
 
-var rdd1 = new RandomDelayDecorator()
-var rdd2 = new RandomDelayDecorator()
+const rdd1 = new RandomDelayDecorator()
+const rdd2 = new RandomDelayDecorator()
 
-var f3 = function f3(x) { console.log("  f3 function called with " + x); return "f3: " + x };
-var f4 = function f4(x) { console.log("  f4 function called with " + x); return "f4: " + x };
+const f3 = function f3(x) { console.log("  f3 function called with " + x); return "f3: " + x };
+const f4 = function f4(x) { console.log("  f4 function called with " + x); return "f4: " + x };
 
 rdd1.setMaxDelay(200)
 
-var test4 = rdd1.decorate(f3)
-var test5 = rdd2.decorate(f3)
-var test6 = debugDecorator(rdd2.decorate(debugDecorator(f4)))
+const test4 = rdd1.decorate(f3)
+const test5 = rdd2.decorate(f3)
+const test6 = debugDecorator(rdd2.decorate(debugDecorator(f4)))
 
 console.log("launching test4 ok? " + (test4("at [100, 200)") === undefined))
 console.log("launching test4 ok? " + (test4("at [100, 200)") === undefined))
