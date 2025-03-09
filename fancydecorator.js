@@ -2,7 +2,7 @@ const http = require('http')
 
 // TODO: implement function debugDecorator here
 
-const debugDecorator = function (f) {
+const debugDecorator = f => {
 	
 
 
@@ -25,8 +25,10 @@ const RandomDelayDecorator = function() {
 // TODO: implement server function
 
 /*
+
 Should do something like this, but waiting between 5 and 10 milliseconds between printing each dot.
-function serverFunction(request, response) {
+
+const serverFunction = (request, response) => {
 	//Sending HTTP Response headers
 	response.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
 	response.write('Loading')
@@ -34,12 +36,13 @@ function serverFunction(request, response) {
 	for (var count = 0; count < 1024; count++) {
 		response.write('.')
 	}
+
 	response.write(' done!')
 	response.end()
 }
 */
 
-function serverFunction(request, response) {
+const serverFunction = (request, response) => {
 	//Sending HTTP Response headers
 	response.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
 	response.write('Loading')
@@ -81,8 +84,8 @@ console.log("--------------------------------------------------")
 const rdd1 = new RandomDelayDecorator()
 const rdd2 = new RandomDelayDecorator()
 
-const f3 = function f3(x) { console.log("  f3 function called with " + x); return "f3: " + x };
-const f4 = function f4(x) { console.log("  f4 function called with " + x); return "f4: " + x };
+const f3 = x => { console.log("  f3 function called with " + x); return "f3: " + x };
+const f4 = x => { console.log("  f4 function called with " + x); return "f4: " + x };
 
 rdd1.setMaxDelay(200)
 
